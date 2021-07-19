@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ /*
+  ~  *  UCF COP3330 Summer 2021 Assignment 5 Solution
+  ~  *  Copyright 2021 Chad Higgins
+  ~  */
+  -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.InventoryManagerController">
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="AddValue" prefHeight="25.0" prefWidth="200.0" promptText="Value" />
+            <TextField fx:id="AddSerialNumber" prefHeight="25.0" prefWidth="200.0" promptText="Unquie Serial Number" />
+            <TextField fx:id="AddName" prefHeight="25.0" prefWidth="200.0" promptText="Name" />
+            <Button mnemonicParsing="false" onAction="#AddClicked" prefHeight="25.0" prefWidth="146.0" text="Add" />
+         </children>
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar prefHeight="25.0" prefWidth="884.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                        <MenuItem mnemonicParsing="false" onAction="#SaveClicked" text="Save..." />
+                        <MenuItem mnemonicParsing="false" onAction="#LoadClicked" text="Load..." />
+                    <MenuItem mnemonicParsing="false" onAction="#CloseClicked" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <TextField fx:id="SearchTerm" onKeyTyped="#SearchBar" prefHeight="25.0" prefWidth="651.0" promptText="Search..." />
+         </children>
+         <padding>
+            <Insets left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <TableView fx:id="InventoryTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="Value" maxWidth="257.0" prefWidth="256.0" text="Value" />
+          <TableColumn fx:id="SerialNumber" maxWidth="257.0" prefWidth="256.0" text="Serial Number" />
+            <TableColumn fx:id="Name" maxWidth="257.0" prefWidth="256.0" text="Name" />
+        </columns>
+         <padding>
+            <Insets left="2.0" right="2.0" />
+         </padding>
+      </TableView>
+   </center>
+   <right>
+      <ScrollBar max="101.0" onDragDetected="#ScrollTable" orientation="VERTICAL" prefWidth="18.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

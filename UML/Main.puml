@@ -1,0 +1,26 @@
+@startuml
+
+javafx.Application <|-- InventoryProgram
+InventoryProgram <-- InventoryManagerController
+InventoryManagerController <-- FileManager
+FileManager <-- HTMLSave
+FileManager <-- TSVSave
+
+InventoryManagerController <-- InventoryList
+InventoryList <-- InventoryItem
+
+class InventoryProgram
+
+class InventoryManagerController
+
+class InventoryList
+
+class InventoryItem
+
+class FileManager
+
+class HTMLSave
+
+class TSVSave
+
+@enduml
