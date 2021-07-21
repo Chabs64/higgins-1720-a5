@@ -10,17 +10,76 @@ InventoryManagerController <-- InventoryList
 InventoryList <-- InventoryItem
 
 class InventoryProgram
+{
+    + Main()
+    + Start()
+}
+
 
 class InventoryManagerController
+{
+    - validSerialNumber
+
+    + ScrollTable()
+    + SaveClicked()
+    + LoadClicked()
+    + AddClicked()
+}
+
 
 class InventoryList
+{
+    + ObservableList<InventoryItem>
+
+    + getList()
+    + clearList()
+
+    + addItem(Double, String, String)
+    + editItemValue(Double)
+    + editItemName(String)
+    + editItemSerialNumber(String)
+}
+
 
 class InventoryItem
+{
+    - Name
+    - SerialNumber
+    - Value
+
+    + InventoryItem(String, String, String)
+
+    + getName()
+    + setName(String)
+
+    + getSerialNumber()
+    + setSerialNumber(String)
+
+    + getValue()
+    + setValue(String)
+}
+
 
 class FileManager
+{
+    + String: filename
+
+    + SaveFile(String)
+
+    + LoadFile(String)
+
+    - ExtensionType(String)
+}
 
 class HTMLSave
+{
+
+}
 
 class TSVSave
+{
+
+}
+
 
 @enduml

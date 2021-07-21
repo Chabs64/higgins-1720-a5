@@ -13,7 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -25,6 +24,7 @@ public class InventoryManagerController implements Initializable {
 
     FileChooser fileChooser = new FileChooser();
 
+    public TextField ErrorMessage;
     public TextField AddValue;
     public TextField AddSerialNumber;
     public TextField AddName;
@@ -38,12 +38,15 @@ public class InventoryManagerController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         fileChooser.setInitialDirectory(new File("C:\\"));
+
+        FileChooser.ExtensionFilter fileExtensions =
+                new FileChooser.ExtensionFilter(
+                        "Web pages", "*.txt", "*.html");
+
+        fileChooser.getExtensionFilters().add(fileExtensions);
     }
 
     public void SearchBar(KeyEvent keyEvent) {
-    }
-
-    public void ScrollTable(MouseEvent mouseEvent) {
     }
 
     public void SaveClicked(ActionEvent actionEvent) {
