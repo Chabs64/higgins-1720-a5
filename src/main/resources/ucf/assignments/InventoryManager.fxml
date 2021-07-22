@@ -34,7 +34,8 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
+                    <MenuItem mnemonicParsing="false" onAction="#DeleteClicked" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#ClearListClicked" text="Clear List" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -52,7 +53,7 @@
       </HBox>
    </top>
    <center>
-      <TableView fx:id="InventoryTable" prefHeight="324.0" prefWidth="766.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="InventoryTable" prefHeight="299.0" prefWidth="768.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="Value" maxWidth="257.0" prefWidth="256.0" text="Value" />
           <TableColumn fx:id="SerialNumber" maxWidth="257.0" prefWidth="256.0" text="Serial Number" />

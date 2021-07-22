@@ -20,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import javax.naming.directory.SearchResult;
 import java.io.File;
@@ -66,8 +67,10 @@ public class InventoryManagerController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         fileChooser.setInitialDirectory(new File("C:\\"));
-        FileChooser.ExtensionFilter fileExtensions = new FileChooser.ExtensionFilter("Web pages", "*.txt", "*.html");
+        FileChooser.ExtensionFilter fileExtensions = new FileChooser.ExtensionFilter("HTML", "*.html");
         fileChooser.getExtensionFilters().add(fileExtensions);
+        FileChooser.ExtensionFilter fileExtensions2 = new FileChooser.ExtensionFilter("TSV", "*.txt");
+        fileChooser.getExtensionFilters().add(fileExtensions2);
 
         InventoryTable.setEditable(true);
 
@@ -163,10 +166,14 @@ public class InventoryManagerController implements Initializable {
 
     @FXML
     public void SaveClicked(ActionEvent actionEvent) {
+
+        File file = fileChooser.showSaveDialog(new Stage());
     }
 
     @FXML
     public void LoadClicked(ActionEvent actionEvent) {
+
+        File file = fileChooser.showOpenDialog(new Stage());
     }
 
     @FXML
@@ -183,7 +190,25 @@ public class InventoryManagerController implements Initializable {
         addItem(name, serialNumber, value);
     }
 
+    @FXML
+    public void DeleteClicked(ActionEvent actionEvent) {
+
+        InventoryItem SelectedItem = InventoryTable.getSelectionModel().getSelectedItem();
+        DeleteItem(SelectedItem);
+    }
+
+    @FXML
+    public void ClearListClicked(ActionEvent actionEvent) {
+
+        InventoryTable.getItems().clear();
+    }
+
     //helper methods
+
+    public void DeleteItem(InventoryItem SelectedItem)
+    {
+        InventoryTable.getItems().remove(SelectedItem);
+    }
 
     public void addItem(String name, String serialNumber, String value)
     {
