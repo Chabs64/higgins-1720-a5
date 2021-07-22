@@ -7,11 +7,17 @@ package ucf.assignments;
  *
  */
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 
@@ -21,43 +27,214 @@ import java.util.ResourceBundle;
 
 public class InventoryManagerController implements Initializable {
 
+    private String name;
+    private String serialNumber;
+    private String value;
 
+    private ObservableList<InventoryItem> TableList = FXCollections.observableArrayList();
     FileChooser fileChooser = new FileChooser();
 
-    public TextField ErrorMessage;
-    public TextField AddValue;
-    public TextField AddSerialNumber;
-    public TextField AddName;
-    public TextField SearchTerm;
-    public TableView InventoryTable;
-    public TableColumn Value;
-    public TableColumn SerialNumber;
-    public TableColumn Name;
+    @FXML
+    private TextField ErrorMessage;
+
+    @FXML
+    private TextField AddValue;
+
+    @FXML
+    private TextField AddSerialNumber;
+
+    @FXML
+    private TextField AddName;
+
+    @FXML
+    private TextField SearchTerm;
+
+    @FXML
+    private TableView<InventoryItem> InventoryTable;
+
+    @FXML
+    private TableColumn<InventoryItem, String> Value;
+
+    @FXML
+    private TableColumn<InventoryItem, String> SerialNumber;
+
+    @FXML
+    private TableColumn<InventoryItem, String> Name;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         fileChooser.setInitialDirectory(new File("C:\\"));
-
-        FileChooser.ExtensionFilter fileExtensions =
-                new FileChooser.ExtensionFilter(
-                        "Web pages", "*.txt", "*.html");
-
+        FileChooser.ExtensionFilter fileExtensions = new FileChooser.ExtensionFilter("Web pages", "*.txt", "*.html");
         fileChooser.getExtensionFilters().add(fileExtensions);
+
+        InventoryTable.setEditable(true);
+
+        Name.setCellValueFactory(new PropertyValueFactory<InventoryItem, String>("Name"));
+        Name.setCellFactory(TextFieldTableCell.forTableColumn());
+        Name.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<InventoryItem, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<InventoryItem, String> event) {
+                InventoryItem item = event.getRowValue();
+                if (validateName(event.getNewValue()))
+                {
+                    item.setName(event.getNewValue());
+                }
+            }
+        });
+
+        SerialNumber.setCellValueFactory(new PropertyValueFactory<InventoryItem, String>("SerialNumber"));
+        SerialNumber.setCellFactory(TextFieldTableCell.forTableColumn());
+        SerialNumber.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<InventoryItem, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<InventoryItem, String> event) {
+                InventoryItem item = event.getRowValue();
+                if (validateSerialNumber(event.getNewValue()))
+                {
+                    item.setSerialNumber(event.getNewValue());
+                }
+            }
+        });
+
+        Value.setCellValueFactory(new PropertyValueFactory<InventoryItem, String>("Value"));
+        Value.setCellFactory(TextFieldTableCell.forTableColumn());
+        Value.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<InventoryItem, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<InventoryItem, String> event) {
+                InventoryItem item = event.getRowValue();
+                if (validateValue(event.getNewValue()))
+                {
+                    item.setValue(event.getNewValue());
+                }
+            }
+        });
+
+        addItem("aaa", "12345678", "10000.00");
+        addItem("bbb", "12345679", "1000.00");
+        addItem("ccc", "12345670", "100.00");
+
+        InventoryTable.setItems(TableList);
     }
 
+    @FXML
     public void SearchBar(KeyEvent keyEvent) {
     }
 
+    @FXML
     public void SaveClicked(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void LoadClicked(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void CloseClicked(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void AddClicked(ActionEvent actionEvent) {
+
+        name = AddName.getText();
+        serialNumber = AddSerialNumber.getText();
+        value = AddValue.getText();
+
+        addItem(name, serialNumber, value);
     }
+
+    //helper methods
+
+    public void addItem(String name, String serialNumber, String value)
+    {
+        if(validateSerialNumber(serialNumber) && validateName(name) && validateValue(value)) {
+            TableList.add(new InventoryItem(name, serialNumber, "$"+value));
+            ErrorMessage.clear();
+            AddValue.clear();
+            AddSerialNumber.clear();
+            AddName.clear();
+        }
+        else
+        {
+            //update error message based on error
+
+            if (!validateSerialNumber(serialNumber))
+            {
+                ErrorMessage.setText("The Serial Number was not unique serial number in the format of XXXXXXXXXX where X can be either a letter or digit! Try Again.");
+            }
+            else if (!validateName(name))
+            {
+                if(name.length() > 256) {
+                    ErrorMessage.setText("The Name was too long! Try Again.");
+                }
+                else {
+                    ErrorMessage.setText("The Name was too short! Try Again.");
+                }
+            }
+            else if(!validateValue(value))
+            {
+                ErrorMessage.setText("That Value was not a monetary value, you may have a maximum of 2 decimal places! Try Again.");
+            }
+        }
+    }
+
+    private boolean validateSerialNumber(String serialNumber)
+    {
+        //sn null check
+        if(serialNumber == null)
+        {
+            return false;
+        }
+
+        //compare sn for length
+        if(serialNumber.length() != 8)
+        {
+            return false;
+        }
+
+        //compare sn for only numbers and letters
+        if (!serialNumber.matches("[a-zA-Z_0-9]*"))
+        {
+            return false;
+        }
+
+        //compare sn for uniqueness
+        for (InventoryItem inventoryItem : TableList) {
+            if (serialNumber.equals(inventoryItem.getSerialNumber())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean validateName(String name)
+    {
+        if(name == null)
+        {
+            return false;
+        }
+
+        if(name.length() < 2 || name.length() > 256)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean validateValue(String value)
+    {
+        if(value == null)
+        {
+            return false;
+        }
+
+        if(!value.matches("[0-9]+\\.?[0-9]{2}?|[0-9]+\\.?[0-9]{1}?"))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
 }

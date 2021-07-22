@@ -9,7 +9,6 @@ package ucf.assignments;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.beans.Observable;
 
 public class InventoryList {
 
@@ -19,16 +18,17 @@ public class InventoryList {
     + getList()
     + clearList()
 
-    + addItem(Double, String, String)
-    + editItemValue(Double)
+    + addItem(String, String, String)
+    + editItemValue(String)
     + editItemName(String)
     + editItemSerialNumber(String)
      */
     String name = "bob";
     String serialNumber = "bob";
     String value = "bob";
+    private ObservableList<InventoryItem> TableList = FXCollections.observableArrayList();
 
+    public InventoryList(){
 
-    ObservableList<InventoryItem> TableList = FXCollections.observableArrayList();
-
+    }
 }

@@ -19,6 +19,7 @@ Your application shall satisfy the following requirements:
 
 3. The user shall be able to add a new inventory item
     3.1 The application shall display an error message if the user enters an existing serial number for the new item
+
 4. The user shall be able to remove an existing inventory item
 
 5. The user shall be able to edit the value of an existing inventory item

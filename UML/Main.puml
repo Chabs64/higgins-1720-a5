@@ -6,7 +6,7 @@ InventoryManagerController <-- FileManager
 FileManager <-- HTMLSave
 FileManager <-- TSVSave
 
-InventoryManagerController <-- InventoryList
+InventoryManagerController <-- InventoryItem
 InventoryList <-- InventoryItem
 
 class InventoryProgram
@@ -20,7 +20,7 @@ class InventoryManagerController
 {
     - validSerialNumber
 
-    + ScrollTable()
+    + SearchBar()
     + SaveClicked()
     + LoadClicked()
     + AddClicked()
@@ -43,9 +43,9 @@ class InventoryList
 
 class InventoryItem
 {
-    - Name
-    - SerialNumber
-    - Value
+    - String: Name
+    - String: SerialNumber
+    - String: Value
 
     + InventoryItem(String, String, String)
 
