@@ -79,6 +79,16 @@ public class InventoryManagerController implements Initializable {
                 if (validateName(event.getNewValue()))
                 {
                     item.setName(event.getNewValue());
+                    ErrorMessage.setText("No Errors.");
+                }
+                else
+                {
+                    if(event.getNewValue().length() > 256) {
+                        ErrorMessage.setText("The Name was too long! Try Again.");
+                    }
+                    else {
+                        ErrorMessage.setText("The Name was too short! Try Again.");
+                    }
                 }
             }
         });
@@ -92,6 +102,12 @@ public class InventoryManagerController implements Initializable {
                 if (validateSerialNumber(event.getNewValue()))
                 {
                     item.setSerialNumber(event.getNewValue());
+                    ErrorMessage.setText("No Errors.");
+                }
+                else if(!validateSerialNumber(event.getNewValue()))
+                {
+                    ErrorMessage.setText("The Serial Number was not unique serial number in the format of XXXXXXXXXX where " +
+                            "X can be either a letter or digit! Try Again.");
                 }
             }
         });
@@ -105,6 +121,11 @@ public class InventoryManagerController implements Initializable {
                 if (validateValue(event.getNewValue()))
                 {
                     item.setValue(event.getNewValue());
+                    ErrorMessage.setText("No Errors.");
+                }
+                else
+                {
+                    ErrorMessage.setText("That Value was not a monetary value, you may have a maximum of 2 decimal places! Try Again.");
                 }
             }
         });
@@ -148,7 +169,7 @@ public class InventoryManagerController implements Initializable {
     {
         if(validateSerialNumber(serialNumber) && validateName(name) && validateValue(value)) {
             TableList.add(new InventoryItem(name, serialNumber, "$"+value));
-            ErrorMessage.clear();
+            ErrorMessage.setText("No Errors.");
             AddValue.clear();
             AddSerialNumber.clear();
             AddName.clear();
@@ -159,7 +180,9 @@ public class InventoryManagerController implements Initializable {
 
             if (!validateSerialNumber(serialNumber))
             {
-                ErrorMessage.setText("The Serial Number was not unique serial number in the format of XXXXXXXXXX where X can be either a letter or digit! Try Again.");
+                ErrorMessage.setText("The Serial Number was not unique serial number in the format of XXXXXXXXXX where " +
+                        "X can be either a letter or digit! Try Again.");
+
             }
             else if (!validateName(name))
             {
