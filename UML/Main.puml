@@ -7,7 +7,8 @@ FileManager <-- HTMLSave
 FileManager <-- TSVSave
 
 InventoryManagerController <-- InventoryItem
-InventoryList <-- InventoryItem
+InventorySearch <-- InventoryItem
+InventoryManagerController <-- InventorySearch
 
 class InventoryProgram
 {
@@ -18,26 +19,21 @@ class InventoryProgram
 
 class InventoryManagerController
 {
-    - validSerialNumber
-
     + SearchBar()
     + SaveClicked()
     + LoadClicked()
     + AddClicked()
+
+    + validator()
 }
 
 
-class InventoryList
+class InventorySearch
 {
-    + ObservableList<InventoryItem>
+    - ObservableList<InventoryItem>: TableList, ResultList
 
-    + getList()
-    + clearList()
-
-    + addItem(Double, String, String)
-    + editItemValue(Double)
-    + editItemName(String)
-    + editItemSerialNumber(String)
+    + InventorySearch(ObservableList<InventoryItem>)
+    + SearchList(String)
 }
 
 

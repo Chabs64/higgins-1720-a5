@@ -21,6 +21,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 
+import javax.naming.directory.SearchResult;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -139,6 +140,25 @@ public class InventoryManagerController implements Initializable {
 
     @FXML
     public void SearchBar(KeyEvent keyEvent) {
+
+        if(SearchTerm.getText() == null)
+        {
+            InventoryTable.setItems(TableList);
+        }
+        else
+        {
+            ObservableList<InventoryItem> SearchResult = new InventorySearch(TableList).SearchList(SearchTerm.getText());
+
+            if (SearchResult.size() > 0) {
+                InventoryTable.setItems(SearchResult);
+                ErrorMessage.setText("No Errors.");
+            }
+            else
+            {
+                InventoryTable.setItems(SearchResult);
+                ErrorMessage.setText("No matches found!");
+            }
+        }
     }
 
     @FXML
