@@ -22,7 +22,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.naming.directory.SearchResult;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -168,12 +167,19 @@ public class InventoryManagerController implements Initializable {
     public void SaveClicked(ActionEvent actionEvent) {
 
         File file = fileChooser.showSaveDialog(new Stage());
+
+        FileManager manager = new FileManager();
+        manager.SaveFile(file, TableList);
     }
 
     @FXML
     public void LoadClicked(ActionEvent actionEvent) {
 
         File file = fileChooser.showOpenDialog(new Stage());
+
+        FileManager manager = new FileManager();
+        TableList = manager.LoadFile(file);
+        InventoryTable.setItems(TableList);
     }
 
     @FXML
@@ -297,7 +303,7 @@ public class InventoryManagerController implements Initializable {
             return false;
         }
 
-        if(!value.matches("[0-9]+\\.?[0-9]{2}?|[0-9]+\\.?[0-9]{1}?"))
+        if(!value.matches("[0-9]+\\.?[0-9]{2}?|[0-9]+\\.?[0-9]"))
         {
             return false;
         }

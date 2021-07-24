@@ -3,11 +3,8 @@
 javafx.Application <|-- InventoryProgram
 InventoryProgram <-- InventoryManagerController
 InventoryManagerController <-- FileManager
-FileManager <-- HTMLSave
-FileManager <-- TSVSave
 
 InventoryManagerController <-- InventoryItem
-InventorySearch <-- InventoryItem
 InventoryManagerController <-- InventorySearch
 
 class InventoryProgram
@@ -58,24 +55,16 @@ class InventoryItem
 
 class FileManager
 {
-    + String: filename
-
     + SaveFile(String)
-
     + LoadFile(String)
+
+    + HTMLSave()
+    + HTMLLoad()
+
+    + TSVSave()
+    + TSVLoad()
 
     - ExtensionType(String)
 }
-
-class HTMLSave
-{
-
-}
-
-class TSVSave
-{
-
-}
-
 
 @enduml
