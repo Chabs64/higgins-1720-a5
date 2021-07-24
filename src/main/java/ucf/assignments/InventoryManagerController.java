@@ -28,10 +28,6 @@ import java.util.ResourceBundle;
 
 public class InventoryManagerController implements Initializable {
 
-    private String name;
-    private String serialNumber;
-    private String value;
-
     private ObservableList<InventoryItem> TableList = FXCollections.observableArrayList();
     FileChooser fileChooser = new FileChooser();
 
@@ -184,14 +180,16 @@ public class InventoryManagerController implements Initializable {
 
     @FXML
     public void CloseClicked(ActionEvent actionEvent) {
+
+
     }
 
     @FXML
     public void AddClicked(ActionEvent actionEvent) {
 
-        name = AddName.getText();
-        serialNumber = AddSerialNumber.getText();
-        value = AddValue.getText();
+        String name = AddName.getText();
+        String serialNumber = AddSerialNumber.getText();
+        String value = AddValue.getText();
 
         addItem(name, serialNumber, value);
     }

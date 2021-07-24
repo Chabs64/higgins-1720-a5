@@ -51,7 +51,8 @@ public class FileManager {
         }
     }
 
-    private void TSVSave(File filepath, ObservableList<InventoryItem> List) {
+    private void TSVSave(File filepath, ObservableList<InventoryItem> List)
+    {
 
         try {
             PrintWriter printWriter = new PrintWriter(filepath);
@@ -72,7 +73,8 @@ public class FileManager {
         }
     }
 
-    private void HTMlSave(File filepath, ObservableList<InventoryItem> List) {
+    private void HTMlSave(File filepath, ObservableList<InventoryItem> List)
+    {
 
         try {
             PrintWriter printWriter = new PrintWriter(filepath);

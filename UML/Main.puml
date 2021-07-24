@@ -16,12 +16,35 @@ class InventoryProgram
 
 class InventoryManagerController
 {
+    - ObservableList<InventoryItem> TableList
+    - FileChooser fileChooser
+
+    @fxml
+    - TextField ErrorMessage;
+    - TextField AddValue;
+    - TextField AddSerialNumber;
+    - TextField AddName;
+    - TextField SearchTerm;
+    - TableView<InventoryItem> InventoryTable;
+    - TableColumn<InventoryItem, String> Value;
+    - TableColumn<InventoryItem, String> SerialNumber;
+    - TableColumn<InventoryItem, String> Name;
+
+    + Initialize()
+
     + SearchBar()
     + SaveClicked()
     + LoadClicked()
     + AddClicked()
+    + DeleteClicked()
+    + ClearListClicked()
 
-    + validator()
+    + addItem(String, String, String)
+    + DeleteItem(InventoryItem)
+
+    - validateValue(String)
+    - validateName(String)
+    - validateSerialNumber(String)
 }
 
 
@@ -58,11 +81,11 @@ class FileManager
     + SaveFile(String)
     + LoadFile(String)
 
-    + HTMLSave()
-    + HTMLLoad()
+    - HTMLSave()
+    - HTMLLoad()
 
-    + TSVSave()
-    + TSVLoad()
+    - TSVSave()
+    - TSVLoad()
 
     - ExtensionType(String)
 }
