@@ -249,7 +249,7 @@ public class InventoryManagerController implements Initializable {
         }
     }
 
-    private boolean validateSerialNumber(String serialNumber)
+    public boolean validateSerialNumber(String serialNumber)
     {
         //sn null check
         if(serialNumber == null)
@@ -279,7 +279,7 @@ public class InventoryManagerController implements Initializable {
         return true;
     }
 
-    private boolean validateName(String name)
+    public boolean validateName(String name)
     {
         if(name == null)
         {
@@ -294,7 +294,7 @@ public class InventoryManagerController implements Initializable {
         return true;
     }
 
-    private boolean validateValue(String value)
+    public boolean validateValue(String value)
     {
         if(value == null)
         {

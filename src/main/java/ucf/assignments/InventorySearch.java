@@ -12,18 +12,6 @@ import javafx.collections.ObservableList;
 
 public class InventorySearch {
 
-    /*
-    + ObservableList<InventoryItem>
-
-    + getList()
-    + clearList()
-
-    + addItem(String, String, String)
-    + editItemValue(String)
-    + editItemName(String)
-    + editItemSerialNumber(String)
-     */
-
     private ObservableList<InventoryItem> TableList = FXCollections.observableArrayList();
     private ObservableList<InventoryItem> ResultList = FXCollections.observableArrayList();
 
