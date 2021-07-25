@@ -64,21 +64,78 @@ class InventoryManagerControllerTest {
 
     @Test
     void deleteItem() {
+
+        String testString = "12345678";
+
+        InventoryManagerController controller = new InventoryManagerController();
+        controller.addItemToTable("bob",testString, "1000");
+
+        controller.deleteItem(0);
+
+        assertEquals(0, controller.TableList.size());
     }
 
     @Test
-    void addItem() {
+    void addItemToTable() {
+        String testString1 = "bob";
+        String testString2 = "12345678";
+        String testString3 = "10000.00";
+
+        InventoryManagerController controller = new InventoryManagerController();
+
+        controller.addItemToTable(testString1, testString2, testString3);
+
+        assertEquals(testString1+testString2+"$"+testString3,controller.TableList.get(0).getName()+controller.TableList.get(0).getSerialNumber()+controller.TableList.get(0).getValue());
     }
 
     @Test
-    void validateSerialNumber() {
+    void validateSerialNumberForLength() {
+
+        String testString = "12345678910";
+
+        InventoryManagerController controller = new InventoryManagerController();
+
+        assertFalse(controller.validateSerialNumber(testString));
     }
 
     @Test
-    void validateName() {
+    void validateSerialNumberForCharType() {
+
+        String testString = "1234567&";
+
+        InventoryManagerController controller = new InventoryManagerController();
+
+        assertFalse(controller.validateSerialNumber(testString));
     }
 
     @Test
-    void validateValue() {
+    void validateSerialNumberForUnique() {
+
+        String testString = "12345678";
+
+        InventoryManagerController controller = new InventoryManagerController();
+        controller.addItemToTable("bob",testString, "1000");
+
+        assertFalse(controller.validateSerialNumber(testString));
+    }
+
+    @Test
+    void validateNameForLength() {
+
+        String testString = "1";
+
+        InventoryManagerController controller = new InventoryManagerController();
+
+        assertFalse(controller.validateName(testString));
+    }
+
+    @Test
+    void validateValueForMoneyNumber() {
+
+        String testString = "1000Avasdfas";
+
+        InventoryManagerController controller = new InventoryManagerController();
+
+        assertFalse(controller.validateValue(testString));
     }
 }

@@ -56,6 +56,8 @@ Implementation of this requirement will yield an extra 2 points on this assignme
 
 package ucf.assignments;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,6 +65,32 @@ import static org.junit.jupiter.api.Assertions.*;
 class InventorySearchTest {
 
     @Test
-    void searchList() {
+    void searchListForSerialNumbers() {
+
+        ObservableList<InventoryItem> TestList = FXCollections.observableArrayList();
+        for (int i = 0; i < 9; i++) {
+            TestList.add(new InventoryItem("bob", "1234567".concat(String.valueOf(i)), "10000"));
+        }
+
+        String TestSearchTerm = "1234";
+
+        TestList = new InventorySearch(TestList).SearchList(TestSearchTerm);
+
+        assertEquals(9, TestList.size());
+    }
+
+    @Test
+    void searchListForNames() {
+
+        ObservableList<InventoryItem> TestList = FXCollections.observableArrayList();
+        for (int i = 0; i < 9; i++) {
+            TestList.add(new InventoryItem("bob".concat(String.valueOf(i)), "12345678", "10000"));
+        }
+
+        String TestSearchTerm = "bob";
+
+        TestList = new InventorySearch(TestList).SearchList(TestSearchTerm);
+
+        assertEquals(9, TestList.size());
     }
 }

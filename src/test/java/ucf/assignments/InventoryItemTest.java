@@ -63,26 +63,54 @@ import static org.junit.jupiter.api.Assertions.*;
 class InventoryItemTest {
 
     @Test
-    void setName() {
+    void setNameTest() {
+
+        InventoryItem item = new InventoryItem("bob", "12345678", "1000");
+        item.setName("cat");
+
+        assertEquals("cat", item.getName());
     }
 
     @Test
-    void getName() {
+    void getNameTest() {
+
+        InventoryItem item = new InventoryItem("bob", "12345678", "1000");
+
+        assertEquals("bob", item.getName());
     }
 
     @Test
-    void setSerialNumber() {
+    void setSerialNumberTest() {
+
+        InventoryItem item = new InventoryItem("bob", "12345678", "1000");
+        item.setSerialNumber("12345679");
+
+        assertEquals("12345679", item.getSerialNumber());
     }
 
     @Test
-    void getSerialNumber() {
+    void getSerialNumberTest() {
+
+        InventoryItem item = new InventoryItem("bob", "12345678", "1000");
+
+        assertEquals("12345678", item.getSerialNumber());
     }
 
     @Test
-    void setValue() {
+    void setValueTest() {
+
+        InventoryItem item = new InventoryItem("bob", "12345678", "1000");
+        item.setValue("10000");
+
+        assertEquals("10000", item.getValue());
     }
 
     @Test
-    void getValue() {
+    void getValueTest() {
+
+
+        InventoryItem item = new InventoryItem("bob", "12345678", "1000");
+
+        assertEquals("1000", item.getValue());
     }
 }

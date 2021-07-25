@@ -16,8 +16,8 @@ class InventoryProgram
 
 class InventoryManagerController
 {
-    - ObservableList<InventoryItem> TableList
-    - FileChooser fileChooser
+    + ObservableList<InventoryItem> TableList
+    + FileChooser fileChooser
 
     @fxml
     - TextField ErrorMessage;

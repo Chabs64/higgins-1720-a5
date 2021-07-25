@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class InventoryManagerController implements Initializable {
 
-    private ObservableList<InventoryItem> TableList = FXCollections.observableArrayList();
+    public ObservableList<InventoryItem> TableList = FXCollections.observableArrayList();
     FileChooser fileChooser = new FileChooser();
 
     @FXML
@@ -198,7 +198,7 @@ public class InventoryManagerController implements Initializable {
     public void DeleteClicked(ActionEvent actionEvent) {
 
         InventoryItem SelectedItem = InventoryTable.getSelectionModel().getSelectedItem();
-        DeleteItem(SelectedItem);
+        deleteItem(InventoryTable.getItems().indexOf(SelectedItem));
     }
 
     @FXML
@@ -209,15 +209,15 @@ public class InventoryManagerController implements Initializable {
 
     //helper methods
 
-    public void DeleteItem(InventoryItem SelectedItem)
+    public void deleteItem(int i)
     {
-        InventoryTable.getItems().remove(SelectedItem);
+        TableList.remove(i);
     }
 
     public void addItem(String name, String serialNumber, String value)
     {
         if(validateSerialNumber(serialNumber) && validateName(name) && validateValue(value)) {
-            TableList.add(new InventoryItem(name, serialNumber, "$"+value));
+            addItemToTable(name, serialNumber, value);
             ErrorMessage.setText("No Errors.");
             AddValue.clear();
             AddSerialNumber.clear();
@@ -247,6 +247,10 @@ public class InventoryManagerController implements Initializable {
                 ErrorMessage.setText("That Value was not a monetary value, you may have a maximum of 2 decimal places! Try Again.");
             }
         }
+    }
+
+    public void addItemToTable(String name, String serialNumber, String value) {
+        TableList.add(new InventoryItem(name, serialNumber, "$"+ value));
     }
 
     public boolean validateSerialNumber(String serialNumber)
