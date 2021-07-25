@@ -40,6 +40,7 @@ class InventoryManagerController
     + ClearListClicked()
 
     + addItem(String, String, String)
+    + addItemToTable(String, String, String)
     + DeleteItem(InventoryItem)
 
     - validateValue(String)
