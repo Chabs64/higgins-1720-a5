@@ -38,11 +38,6 @@
                         <MenuItem mnemonicParsing="false" onAction="#ClearListClicked" text="Clear List" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
               </menus>
             </MenuBar>
             <TextField fx:id="SearchTerm" onKeyTyped="#SearchBar" prefHeight="25.0" prefWidth="651.0" promptText="Search..." />
