@@ -20,15 +20,16 @@ class InventoryManagerController
     + FileChooser fileChooser
 
     @fxml
-    - TextField ErrorMessage;
-    - TextField AddValue;
-    - TextField AddSerialNumber;
-    - TextField AddName;
-    - TextField SearchTerm;
-    - TableView<InventoryItem> InventoryTable;
-    - TableColumn<InventoryItem, String> Value;
-    - TableColumn<InventoryItem, String> SerialNumber;
-    - TableColumn<InventoryItem, String> Name;
+    - BorderPane MainScene
+    - TextField ErrorMessage
+    - TextField AddValue
+    - TextField AddSerialNumber
+    - TextField AddName
+    - TextField SearchTerm
+    - TableView<InventoryItem> InventoryTable
+    - TableColumn<InventoryItem, String> Value
+    - TableColumn<InventoryItem, String> SerialNumber
+    - TableColumn<InventoryItem, String> Name
 
     + Initialize()
 
