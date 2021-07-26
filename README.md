@@ -10,7 +10,7 @@
   Enter in a unique serial number using a combination of 8 letters and numbers.  
   Enter in a name of your choosing between 2 and 256 characters.  
   Then click Add Button to add the item to the inventory.  
-  If any errors are found within the inventory entry the error message,  
+  If any errors are found within the inventory entry the error message,
   below the table and above the Add Button, will be updated to help you resolve the error.  
 	
   
@@ -28,7 +28,7 @@
   Under the Serial Number column, enter in a unique serial number only using letters and numbers.  
   Under the Name column, enter in a name of your choosing between 2 and 256 characters.  
   Then hit enter to confirm the change.  
-  If any errors are found within the edited cell the error message,  
+  If any errors are found within the edited cell the error message,
   below the table and above the Add Button, will be updated to help you resolve the error.  
   Any erroneous values will remain in the cell, but not in your inventory, until you interact with the Inventory Manager again.  
 	
