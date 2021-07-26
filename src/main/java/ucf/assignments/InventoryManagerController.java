@@ -265,7 +265,7 @@ public class InventoryManagerController implements Initializable {
         }
 
         //compare sn for length
-        if(serialNumber.length() != 8)
+        if(serialNumber.length() != 10)
         {
             return false;
         }

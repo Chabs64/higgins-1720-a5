@@ -71,9 +71,9 @@ class FileManagerTest {
 
         //make a list, populate it.
         ObservableList<InventoryItem> TestList = FXCollections.observableArrayList();
-        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
-        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
-        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
+        TestList.add(new InventoryItem("aaa", "12345678XX", "1000"));
+        TestList.add(new InventoryItem("aaa", "12345678XX", "1000"));
+        TestList.add(new InventoryItem("aaa", "12345678XX", "1000"));
 
         //save it
         FileManager testManger = new FileManager();
@@ -86,7 +86,7 @@ class FileManagerTest {
 
         //compare items
         for (InventoryItem inventoryItem : resultList) {
-            if (!"aaa123456781000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
+            if (!"aaa12345678XX1000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
                 assertTrue(false);
             }
         }
@@ -107,7 +107,7 @@ class FileManagerTest {
 
         //compare items
         for (InventoryItem inventoryItem : resultList) {
-            if (!"aaa123456781000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
+            if (!"aaa12345678XX1000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
                 assertTrue(false);
             }
         }
@@ -123,9 +123,9 @@ class FileManagerTest {
 
         //make a list, populate it.
         ObservableList<InventoryItem> TestList = FXCollections.observableArrayList();
-        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
-        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
-        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
+        TestList.add(new InventoryItem("aaa", "12345678XX", "1000"));
+        TestList.add(new InventoryItem("aaa", "12345678XX", "1000"));
+        TestList.add(new InventoryItem("aaa", "12345678XX", "1000"));
 
         //save it
         FileManager testManger = new FileManager();
@@ -138,7 +138,7 @@ class FileManagerTest {
 
         //compare items
         for (InventoryItem inventoryItem : resultList) {
-            if (!"aaa123456781000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
+            if (!"aaa12345678XX1000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
                 assertFalse(true);
             }
         }
@@ -159,7 +159,7 @@ class FileManagerTest {
 
         //compare items
         for (InventoryItem inventoryItem : resultList) {
-            if (!"aaa123456781000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
+            if (!"aaa12345678XX1000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
                 assertFalse(true);
             }
         }

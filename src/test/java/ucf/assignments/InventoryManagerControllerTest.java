@@ -65,7 +65,7 @@ class InventoryManagerControllerTest {
     @Test
     void deleteItem() {
 
-        String testString = "12345678";
+        String testString = "12345678XX";
 
         InventoryManagerController controller = new InventoryManagerController();
         controller.addItemToTable("bob",testString, "1000");
@@ -78,7 +78,7 @@ class InventoryManagerControllerTest {
     @Test
     void addItemToTable() {
         String testString1 = "bob";
-        String testString2 = "12345678";
+        String testString2 = "12345678XX";
         String testString3 = "10000.00";
 
         InventoryManagerController controller = new InventoryManagerController();
@@ -91,7 +91,7 @@ class InventoryManagerControllerTest {
     @Test
     void validateSerialNumberForLength() {
 
-        String testString = "12345678910";
+        String testString = "123456789XXXX";
 
         InventoryManagerController controller = new InventoryManagerController();
 
@@ -101,7 +101,7 @@ class InventoryManagerControllerTest {
     @Test
     void validateSerialNumberForCharType() {
 
-        String testString = "1234567&";
+        String testString = "1234567&XX";
 
         InventoryManagerController controller = new InventoryManagerController();
 
@@ -111,7 +111,7 @@ class InventoryManagerControllerTest {
     @Test
     void validateSerialNumberForUnique() {
 
-        String testString = "12345678";
+        String testString = "12345678XX";
 
         InventoryManagerController controller = new InventoryManagerController();
         controller.addItemToTable("bob",testString, "1000");
