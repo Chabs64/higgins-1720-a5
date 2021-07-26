@@ -1,10 +1,10 @@
 # higgins-1720-a5
 
-Thank You for reading me!
+###### Thank You for reading me!
 
-Welcome to learning about how to use Inventory Manager!
+# Welcome to learning about how to use Inventory Manager!
 
-To add items: Add Button
+## To add items: Add Button
 
   Enter in a monetary value, up to two decimal places.  
   Enter in a unique serial number using a combination of 8 letters and numbers.  
@@ -14,7 +14,7 @@ To add items: Add Button
   below the table and above the Add Button, will be updated to help you resolve the error.  
 	
   
-To remove items: Delete Button
+## To remove items: Delete Button
 
   Frist select an Item you would like to delete.  
   Then click edit on the file bar.  
@@ -22,7 +22,7 @@ To remove items: Delete Button
   You can also remove all item by clicking the Clear List Button below the Delete Button.  
 	
   
-To edit items: Double Click inside an item element
+## To edit items: Double Click inside an item element
 
   Under the Value column, enter in a monetary value, up to two decimal places.  
   Under the Serial Number column, enter in a unique serial number only using letters and numbers.  
@@ -33,14 +33,14 @@ To edit items: Double Click inside an item element
   Any erroneous values will remain in the cell, but not in your inventory, until you interact with the Inventory Manager again.  
 	
   
-To sort items: Click on the Table Columns.
+## To sort items: Click on the Table Columns.
 
   Click the Value column to sort by values.  
   Click the Serial Number column to sort by serial numbers.  
   Click the Name column to sort by name.  
 	
   
-To save an inventory: Save... Button
+## To save an inventory: Save... Button
 
   Click the File Button then click the Save... Button.  
   A new widow will appear after clicking the Save... Button.  
@@ -48,7 +48,7 @@ To save an inventory: Save... Button
   Then name the file and save it where you would like too.  
 	
   
-To load an inventory: Load... Button
+## To load an inventory: Load... Button
 
   Click the File Button then click the Load... Button.  
   A new window will appear after clicking the Load... Button.  
@@ -56,10 +56,11 @@ To load an inventory: Load... Button
   Then select the file you would like to load.  
 	
   
-To close the program: Click the File Button then click the Close Button
+## To close the program: Close Button
 
+  Click the File Button then click the Close Button.  
   This will close Inventory Manager and not save the current inventory.  
   Clicking the X in the left-hand corner will also close Inventory Manager.  
 	
   
-The program can also be resized, expanded, and minimized using the window button in the top left-hand corner.
+###### The program can also be resized, expanded, and minimized using the window button in the top left-hand corner.
