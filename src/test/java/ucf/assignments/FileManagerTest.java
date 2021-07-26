@@ -56,7 +56,11 @@ Implementation of this requirement will yield an extra 2 points on this assignme
 
 package ucf.assignments;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
+
+import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -64,17 +68,103 @@ class FileManagerTest {
 
     @Test
     void saveFileHTML() {
+
+        //make a list, populate it.
+        ObservableList<InventoryItem> TestList = FXCollections.observableArrayList();
+        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
+        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
+        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
+
+        //save it
+        FileManager testManger = new FileManager();
+        File file = new File("testHTMLFile.html");
+        testManger.SaveFile(file, TestList);
+
+        //load it into new list
+        ObservableList<InventoryItem> resultList = FXCollections.observableArrayList();
+        resultList = testManger.LoadFile(file);
+
+        //compare items
+        for (InventoryItem inventoryItem : resultList) {
+            if (!"aaa123456781000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
+                assertTrue(false);
+            }
+        }
+
+        //good if all items the same.
+        assertTrue(true);
     }
 
     @Test
     void loadFileHTMl() {
+
+        FileManager testManger = new FileManager();
+        File file = new File("testTSVFile.html");
+
+        //load it into new list
+        ObservableList<InventoryItem> resultList = FXCollections.observableArrayList();
+        resultList = testManger.LoadFile(file);
+
+        //compare items
+        for (InventoryItem inventoryItem : resultList) {
+            if (!"aaa123456781000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
+                assertTrue(false);
+            }
+        }
+
+        //good if all items the same.
+        assertTrue(true);
+
+
     }
 
     @Test
     void saveFileTSV() {
+
+        //make a list, populate it.
+        ObservableList<InventoryItem> TestList = FXCollections.observableArrayList();
+        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
+        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
+        TestList.add(new InventoryItem("aaa", "12345678", "1000"));
+
+        //save it
+        FileManager testManger = new FileManager();
+        File file = new File("testTSVFile.txt");
+        testManger.SaveFile(file, TestList);
+
+        //load it into new list
+        ObservableList<InventoryItem> resultList = FXCollections.observableArrayList();
+        resultList = testManger.LoadFile(file);
+
+        //compare items
+        for (InventoryItem inventoryItem : resultList) {
+            if (!"aaa123456781000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
+                assertFalse(true);
+            }
+        }
+
+        //good if all items the same.
+        assertTrue(true);
     }
 
     @Test
     void loadFileTSV() {
+
+        FileManager testManger = new FileManager();
+        File file = new File("testTSVFile.txt");
+
+        //load it into new list
+        ObservableList<InventoryItem> resultList = FXCollections.observableArrayList();
+        resultList = testManger.LoadFile(file);
+
+        //compare items
+        for (InventoryItem inventoryItem : resultList) {
+            if (!"aaa123456781000".equals(inventoryItem.getName() + inventoryItem.getSerialNumber() + inventoryItem.getValue())) {
+                assertFalse(true);
+            }
+        }
+
+        //good if all items the same.
+        assertTrue(true);
     }
 }

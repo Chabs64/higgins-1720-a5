@@ -169,8 +169,9 @@ public class FileManager {
                 String[] tabArray = line.split("\t");
 
                 value = tabArray[0];
-                name = tabArray[1];
-                serialNumber = tabArray[2];
+                serialNumber = tabArray[1];
+                name = tabArray[2];
+
                 List.add(new InventoryItem(name, serialNumber, value));
             }
 

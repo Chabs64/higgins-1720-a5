@@ -129,10 +129,6 @@ public class InventoryManagerController implements Initializable {
             }
         });
 
-        addItem("aaa", "12345678", "10000.00");
-        addItem("bbb", "12345679", "1000.00");
-        addItem("ccc", "12345670", "100.00");
-
         InventoryTable.setItems(TableList);
     }
 
