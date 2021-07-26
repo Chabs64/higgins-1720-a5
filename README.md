@@ -7,7 +7,7 @@
 ## To add items: Add Button
 
   Enter in a monetary value, up to two decimal places.  
-  Enter in a unique serial number using a combination of 8 letters and numbers.  
+  Enter in a unique serial number using a combination of 10 letters and numbers.  
   Enter in a name of your choosing between 2 and 256 characters.  
   Then click Add Button to add the item to the inventory.  
   If any errors are found within the inventory entry the error message,
