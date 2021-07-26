@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -30,6 +31,9 @@ public class InventoryManagerController implements Initializable {
 
     public ObservableList<InventoryItem> TableList = FXCollections.observableArrayList();
     FileChooser fileChooser = new FileChooser();
+
+    @FXML
+    private BorderPane MainScene;
 
     @FXML
     private TextField ErrorMessage;
@@ -177,7 +181,8 @@ public class InventoryManagerController implements Initializable {
     @FXML
     public void CloseClicked(ActionEvent actionEvent) {
 
-
+        Stage stage = (Stage) MainScene.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
