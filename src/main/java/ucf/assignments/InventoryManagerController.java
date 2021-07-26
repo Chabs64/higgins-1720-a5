@@ -212,7 +212,9 @@ public class InventoryManagerController implements Initializable {
 
     public void deleteItem(int i)
     {
-        TableList.remove(i);
+        if(i <= TableList.size() && i > -1) {
+            TableList.remove(i);
+        }
     }
 
     public void addItem(String name, String serialNumber, String value)
