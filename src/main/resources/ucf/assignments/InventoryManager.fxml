@@ -70,7 +70,7 @@
             <HBox>
                <children>
                   <TextField fx:id="AddValue" prefHeight="25.0" prefWidth="200.0" promptText="Value" />
-                  <TextField fx:id="AddSerialNumber" prefHeight="25.0" prefWidth="200.0" promptText="Unquie Serial Number" />
+                  <TextField fx:id="AddSerialNumber" prefHeight="25.0" prefWidth="200.0" promptText="Unique Serial Number" />
                   <TextField fx:id="AddName" prefHeight="25.0" prefWidth="200.0" promptText="Name" />
                   <Button mnemonicParsing="false" onAction="#AddClicked" prefHeight="25.0" prefWidth="146.0" text="Add" />
                </children>
